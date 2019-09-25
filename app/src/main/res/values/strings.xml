@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">to_do</string>
+    <string name="txt_Toolbar_Title">To-Do App</string>
+    <string name="edt_main_hint">Search In To-do List</string>
 </resources>
