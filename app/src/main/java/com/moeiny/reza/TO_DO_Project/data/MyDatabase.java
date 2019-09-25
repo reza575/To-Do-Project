@@ -10,21 +10,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDatabase extends SQLiteOpenHelper {
 
-    public static final String DB_NAME="ToDo_App";
+    public static final String DB_NAME="ToDoApp";
     public static final int DB_VERSION=1;
     public static final String TBL_NAME="todolist";
     public static final String COL_ID="id";
     public static final String COL_TITLE="title";
     public static final String COL_DESC="description";
-    public static final String COL_TIME="time";
     public static final String COL_DATE="date";
+    public static final String COL_TIME="time";
     public static final String COL_MARK="mark";
 
     public static final String QUERY="CREATE TABLE IF NOT EXISTS "+TBL_NAME+"("+
             COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
             COL_TITLE+" TEXT,"+
             COL_DESC+" TEXT,"+
-            COL_TIME+" TEXT,"+
+            COL_DATE+" TEXT,"+
             COL_TIME+" TEXT,"+
             COL_MARK+" TEXT);";
 
@@ -53,12 +53,12 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 
 
-    public long addInfo(String title, String desc,String img, String date,String time,String mark){
+    public long addInfo(String title, String desc, String date,String time,String mark){
         ContentValues contentValues=new ContentValues();
         contentValues.put(COL_TITLE,title);
         contentValues.put(COL_DESC,desc);
-        contentValues.put(COL_TIME,time);
         contentValues.put(COL_DATE,date);
+        contentValues.put(COL_TIME,time);
         contentValues.put(COL_MARK,mark);
 
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
@@ -71,31 +71,36 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor getInfos(){
-        String query="SELECT  * FROM "+TBL_NAME+" ORDER BY "+COL_DATE+","+COL_TIME;
+        String query="SELECT  * FROM "+TBL_NAME+"" ;
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         return sqLiteDatabase.rawQuery(query,null);
     }
 
     public Cursor getSomeData(){
-        String name="mahla";
-        String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_ID+" = ?";
+        String mark="1";
+        String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_MARK+" = ?";
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
-        return sqLiteDatabase.rawQuery(query,new String[]{String.valueOf(name)});
+        return sqLiteDatabase.rawQuery(query,new String[]{String.valueOf(mark)});
     }
 
-    public void updateRow(){
-        int age=222;
+    public Cursor getSearchData(String title){
+        String search="%"+title.trim()+"%";
+        String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_TITLE+" LIKE ?";
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        return sqLiteDatabase.rawQuery(query,new String[]{search});
+    }
+
+    public void updateRow(Integer id,ContentValues values){
+
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
-        ContentValues contentValues=new ContentValues();
-        contentValues.put(COL_DATE,age);
-        sqLiteDatabase.update(TBL_NAME,contentValues,COL_DATE+" = ?",new String[]{String.valueOf(12)});
+
+        sqLiteDatabase.update(TBL_NAME,values,COL_ID+" = ?",new String[]{String.valueOf(id)});
     }
 
-    public void deleteRow(){
+    public void deleteRow(Integer id){
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
-        sqLiteDatabase.delete(TBL_NAME,COL_DATE+" = ?",new String[]{String.valueOf(20)});
+        sqLiteDatabase.delete(TBL_NAME,COL_ID+" = ?",new String[]{String.valueOf(id)});
     }
-
 
 
 }
