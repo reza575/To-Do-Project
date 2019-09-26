@@ -23,12 +23,12 @@
                 android:text="TO - DO - App "
                 android:layout_alignParentLeft="true"/>
 
-
         </RelativeLayout>
 
         <ImageButton
+            android:background="@color/white"
             android:id="@+id/img_fragmenthome_slider"
-            android:scaleType="centerCrop"
+            android:src="@drawable/todoimage"
             android:layout_width="match_parent"
             android:layout_height="100dp"/>
 
@@ -59,7 +59,6 @@
             android:layout_below="@id/rel_fragmenthome_todo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
 
     </LinearLayout>
 
