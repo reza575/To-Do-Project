@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_detailcontent_Title"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="8dp"
+        android:text="To-Do-App"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_detailcontent_Date"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        android:text="17 شهریور"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="8dp"
+        android:layout_below="@id/txt_detailcontent_Title"
+        android:id="@+id/card_detailcontent_Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="4dp"
+            android:id="@+id/txt_detailcontent_Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
