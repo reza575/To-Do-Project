@@ -83,6 +83,13 @@ public class MyDatabase extends SQLiteOpenHelper {
         return sqLiteDatabase.rawQuery(query,new String[]{String.valueOf(mark)});
     }
 
+    public Cursor getSomeDatabyid(Integer id){
+
+        String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_ID+" = ?";
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        return sqLiteDatabase.rawQuery(query,new String[]{String.valueOf(id)});
+    }
+
     public Cursor getSearchData(String title){
         String search="%"+title.trim()+"%";
         String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_TITLE+" LIKE ?";

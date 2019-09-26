@@ -3,12 +3,15 @@ package com.moeiny.reza.TO_DO_Project.fragmnts;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.moeiny.reza.TO_DO_Project.R;
 import com.moeiny.reza.TO_DO_Project.data.MyDatabase;
 import com.moeiny.reza.TO_DO_Project.data.ToDoItems;
@@ -16,6 +19,7 @@ import com.moeiny.reza.TO_DO_Project.detail.DetailActivity;
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder> {
@@ -52,6 +56,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
            imgEditItems=(ImageView)itemView.findViewById(R.id.img_todorow_edit);
            imgToDo=(ImageView)itemView.findViewById(R.id.img_todorow_Icon);
            parent=(CardView)itemView.findViewById(R.id.card_todorow_parent);
+
+
        }
    }
     @NonNull
@@ -63,11 +69,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ItemsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ItemsViewHolder holder, final int position) {
         final String description;
         final Integer id;
 
         final ToDoItems items=itemsList.get(position);
+        final ToDoItems items2=itemsList.get(position);
         holder.txtTitle.setText(items.getTitle().toString());
         holder.txtDate.setText(items.getDate().toString());
         holder.txtTime.setText(items.getTime().toString());
@@ -87,20 +94,28 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
                     values=new ContentValues();
                     values.put("mark","1");
                     myDatabase.updateRow(id,values);
+
                 }else{
                     ContentValues values;
                     values=new ContentValues();
                     values.put("mark","0");
                     myDatabase.updateRow(id,values);
+
                 }
 
             }
         });
 
+
         holder.imgDeleteItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                     myDatabase.deleteRow(id);
+              myDatabase.deleteRow(id);
+
+                itemsList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, itemsList.size());
+                notifyDataSetChanged();
                 }
         });
 
@@ -118,7 +133,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
                 intent.putExtra("items_Mark",items.getMark());
                 context.startActivity(intent);
             }
+
         });
+
     }
 
     @Override
