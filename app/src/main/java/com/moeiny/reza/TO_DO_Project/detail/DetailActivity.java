@@ -76,9 +76,6 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 finish();
 
-                fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.rel_main_fragmentContainer,new HomeFragment());
-                fragmentTransaction.commit();
                 }
         });
     }
