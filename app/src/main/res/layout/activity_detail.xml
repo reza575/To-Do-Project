@@ -8,44 +8,40 @@
     <include layout="@layout/toolbar"/>
 
     <EditText
-        android:id="@+id/edt_insertFragment_title"
+        android:id="@+id/edt_detailActivity_title"
         android:layout_below="@+id/toolbar_main_toolbar"
         android:layout_margin="8dp"
         android:padding="8dp"
-        android:hint="title..."
         android:background="@drawable/edt_search_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"/>
 
     <EditText
-        android:id="@+id/edt_insertFragment_desription"
-        android:layout_below="@id/edt_insertFragment_title"
+        android:id="@+id/edt_detailActivity_desription"
+        android:layout_below="@id/edt_detailActivity_title"
         android:layout_margin="8dp"
         android:padding="8dp"
-        android:hint="Description"
-        android:background="@drawable/edt_search_shape"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         android:textSize="16sp"/>
-
-    <EditText
-        android:id="@+id/edt_insertFragment_date"
-        android:layout_below="@id/edt_insertFragment_desription"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:hint="Date"
         android:background="@drawable/edt_search_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"/>
 
     <EditText
-        android:id="@+id/edt_insertFragment_time"
-        android:layout_below="@id/edt_insertFragment_date"
+        android:id="@+id/edt_detailActivity_date"
+        android:layout_below="@id/edt_detailActivity_desription"
         android:layout_margin="8dp"
         android:padding="8dp"
-        android:hint="Time"
+        android:background="@drawable/edt_search_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edt_detailActivity_time"
+        android:layout_below="@id/edt_detailActivity_date"
+        android:layout_margin="8dp"
+        android:padding="8dp"
         android:background="@drawable/edt_search_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,14 +50,13 @@
 
     <Button
         android:textColor="@color/white"
-        android:id="@+id/btn_insertFragment_save"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_detailActivity_save"
+        android:layout_below="@+id/edt_detailActivity_time"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-
         android:background="@drawable/shap_btn"
-        android:text="Save to List"
+        android:text="Save Cheanges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

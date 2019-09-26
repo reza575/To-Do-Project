@@ -17,24 +17,26 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeFragment extends Fragment {
-    View myView;
-    RecyclerView recyclerView;
-    ItemsAdapter adapter;
-    List<ToDoItems> listItems;
+public class MarkFragment extends Fragment {
+
     MyDatabase myDatabase;
+    List<ToDoItems> listItems;
+    ItemsAdapter adapter;
+    View myView;
+     RecyclerView recyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       myView=inflater.inflate(R.layout.fragment_home,container,false);
+        myView = inflater.inflate(R.layout.fragment_mark, container, false);
         setView();
-       getMarkItems(myView.getContext());
-       return myView;
+        getMarkItems(myView.getContext());
+        return myView;
     }
 
     public void getMarkItems(Context context) {
         myDatabase=new MyDatabase(context);
-        Cursor cursor=myDatabase.getInfos();
+        Cursor cursor=myDatabase.getSomeData();
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 int id=cursor.getInt(0);
@@ -61,17 +63,16 @@ public class HomeFragment extends Fragment {
 
 
     public void setDataOnRecycler(){
-        adapter=new ItemsAdapter(this.getContext(),listItems);
+        adapter=new ItemsAdapter(myView.getContext(),listItems);
         recyclerView.setAdapter(adapter);
     }
 
     public void setView(){
         myDatabase=new MyDatabase(this.getContext());
         listItems=new ArrayList<ToDoItems>();
-        recyclerView = myView.findViewById(R.id.rv_fragmenthome_todoitems);
+        recyclerView = myView.findViewById(R.id.rv_fragmentMark_markitems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));
     }
 
+    }
 
-
-}

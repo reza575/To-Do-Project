@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.moeiny.reza.to_do.R;
-import com.moeiny.reza.to_do.data.MyDatabase;
-
+import com.moeiny.reza.TO_DO_Project.R;
+import com.moeiny.reza.TO_DO_Project.data.MyDatabase;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

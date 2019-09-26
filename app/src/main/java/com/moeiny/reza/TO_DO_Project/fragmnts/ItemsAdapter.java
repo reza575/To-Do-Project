@@ -2,19 +2,18 @@ package com.moeiny.reza.TO_DO_Project.fragmnts;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.moeiny.reza.TO_DO_Project.R;
 import com.moeiny.reza.TO_DO_Project.data.MyDatabase;
 import com.moeiny.reza.TO_DO_Project.data.ToDoItems;
-
+import com.moeiny.reza.TO_DO_Project.detail.DetailActivity;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +39,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
        ImageView imgDeleteItems;
        ImageView imgEditItems;
        ImageView imgToDo;
+
 
        public ItemsViewHolder(@NonNull View itemView) {
            super(itemView);
@@ -79,20 +79,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
             holder.chkMark.setChecked(false);
         }
 
-        holder.parent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent=new Intent(context, DetailActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.putExtra("items_Title",items.getTitle());
-//                intent.putExtra("items_Date",items.getDate());
-//                intent.putExtra("items_Time",items.getTime());
-//                intent.putExtra("items_Description",items.getDescription());
-//                context.startActivity(intent);
-
-            }
-        });
-
         holder.chkMark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,8 +93,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
                     values.put("mark","0");
                     myDatabase.updateRow(id,values);
                 }
-              //  long id=myDatabase.addInfo(holder.txtTitle.getText().toString(),description,holder.txtDate.getText().toString(),holder.txtTime.getText().toString(),"1");
-           //     Toast.makeText(context,id+"",Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -116,30 +101,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
             @Override
             public void onClick(View view) {
                      myDatabase.deleteRow(id);
-
                 }
         });
 
         holder.imgEditItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Bundle bundle = new Bundle();
-//                bundle.putInt("id",items.getId());
-//                bundle.putString("title",items.getTitle());
-//                bundle.putString("description",items.getDescription());
-//                bundle.putString("date",items.getDate());
-//                bundle.putString("time",items.getTime());
-//                bundle.putString("mark",items.getMark());
-//
-//                InsertFragment insertFragment = new InsertFragment();
-//                insertFragment.setArguments(bundle);
-//
-//                FragmentManager fragmentManager = getsuppFragmentManager();
-//
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.content, insertFragment)
-//                        .commit();
+                Intent intent=new Intent(context, DetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("items_Id",items.getId());
+                intent.putExtra("items_Title",items.getTitle());
+                intent.putExtra("items_Description",items.getDescription());
+                intent.putExtra("items_Date",items.getDate());
+                intent.putExtra("items_Time",items.getTime());
+                intent.putExtra("items_Description",items.getDescription());
+                intent.putExtra("items_Mark",items.getMark());
+                context.startActivity(intent);
             }
         });
     }
