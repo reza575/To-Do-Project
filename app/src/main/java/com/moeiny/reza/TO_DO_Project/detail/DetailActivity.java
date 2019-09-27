@@ -71,7 +71,7 @@ public class DetailActivity extends AppCompatActivity {
                     values.put("time",edtTime.getText().toString());
                     values.put("mark",itemmark);
                     myDatabase.updateRow(id,values);
-                    Toast.makeText(DetailActivity.this,"Changes have been saved  ",Toast.LENGTH_SHORT).show();
+              //      Toast.makeText(DetailActivity.this,"Changes have been saved  ",Toast.LENGTH_SHORT).show();
 
                     }
                 finish();
