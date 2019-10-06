@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edt_fragmentSearch_search"
+        android:background="@drawable/edt_search_shape"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:hint="Search..."
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_fragmentSearch_searchedItem"
+        android:layout_below="@id/edt_fragmentSearch_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_fragmentSearch_notFound"
+        android:visibility="gone"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nothings has found..."
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

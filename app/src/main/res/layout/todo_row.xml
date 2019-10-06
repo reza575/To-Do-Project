@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_todorow_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_todorow_Icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/txt_todorow_date"
+            android:layout_alignParentLeft="true"
+            app:srcCompat="@drawable/ic_work_blue_24dp" />
+
+        <RelativeLayout
+            android:id="@+id/rel_newsrow_iconbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_newsrow_line"
+            android:layoutDirection="ltr"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/img_todorow_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/txt_todorow_edit"
+                app:srcCompat="@drawable/ic_update_black_24dp" />
+
+            <CheckBox
+                android:id="@+id/chk_todorow_mark"
+                android:layout_toRightOf="@id/txt_todorow_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <ImageView
+                android:id="@+id/img_todorow_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/txt_todorow_delete"
+                app:srcCompat="@drawable/ic_delete_sweep_black_24dp" />
+
+            <TextView
+                android:id="@+id/txt_todorow_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="120dp"
+                android:text="Edit" />
+
+            <TextView
+                android:id="@+id/txt_todorow_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/chk_todorow_mark"
+                android:text="Delete" />
+
+            <TextView
+                android:id="@+id/txt_todorow_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/img_todorow_edit"
+                android:text="Mark" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/txt_todorow_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="4dp"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:layout_marginRight="8dp"
+            android:text="Date" />
+
+
+        <TextView
+            android:id="@+id/txt_todorow_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_todorow_date"
+            android:layout_marginLeft="8dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/img_todorow_Icon"
+            android:maxLines="2"
+            tools:text="Go to library" />
+
+        <TextView
+            android:id="@+id/txt_todorow_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:layout_margin="4dp"
+            tools:text="Time" />
+
+        <View
+            android:id="@+id/view_newsrow_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/img_todorow_Icon"
+            android:background="@color/gray300" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
