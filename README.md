@@ -13,7 +13,7 @@ This project is done in Kotlin with respectful to Clean Architecture
 Kotlin
 
 
-![Main Screen](https://github.com/rezakhmf/commonwealthbank-test/blob/master/screenshots/To-Do-app.png)
+![Main Screen](https://github.com/rezakhmf/commonwealthbank-test/blob/master/screenshots/To-Do-App.png)
 
 
 
