@@ -1,4 +1,4 @@
-package com.moeiny.reza.TO_DO_Project.fragmnts;
+package com.moeiny.reza.todo.fragmnts;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.moeiny.reza.TO_DO_Project.R;
-import com.moeiny.reza.TO_DO_Project.data.MyDatabase;
-import com.moeiny.reza.TO_DO_Project.data.ToDoItems;
+import com.moeiny.reza.todo.R;
+import com.moeiny.reza.todo.data.MyDatabase;
+import com.moeiny.reza.todo.data.ToDoItems;
 import java.util.ArrayList;
 import java.util.List;
 import androidx.annotation.NonNull;
@@ -85,7 +85,7 @@ public class SerachFragment extends Fragment {
         listItems=new ArrayList<ToDoItems>();
         recyclerView = myView.findViewById(R.id.rv_fragmentSearch_searchedItem);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));
-        edtSearch=(EditText)myView.findViewById(R.id.edt_fragmentSearch_search);
+        edtSearch= myView.findViewById(R.id.edt_fragmentSearch_search);
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
