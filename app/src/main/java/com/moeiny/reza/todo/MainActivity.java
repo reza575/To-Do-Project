@@ -1,16 +1,15 @@
-package com.moeiny.reza.TO_DO_Project;
+package com.moeiny.reza.todo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.moeiny.reza.TO_DO_Project.fragmnts.HomeFragment;
-import com.moeiny.reza.TO_DO_Project.fragmnts.InsertFragment;
-import com.moeiny.reza.TO_DO_Project.fragmnts.MarkFragment;
-import com.moeiny.reza.TO_DO_Project.fragmnts.SerachFragment;
+import com.moeiny.reza.todo.fragmnts.HomeFragment;
+import com.moeiny.reza.todo.fragmnts.InsertFragment;
+import com.moeiny.reza.todo.fragmnts.MarkFragment;
+import com.moeiny.reza.todo.fragmnts.SerachFragment;
 import com.ss.bottomnavigation.BottomNavigation;
 import com.ss.bottomnavigation.events.OnSelectedItemChangeListener;
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupVews() {
-        bottomNavigation=(BottomNavigation)findViewById(R.id.bottom_navigation);
+        bottomNavigation= findViewById(R.id.bottom_navigation);
         fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.rel_main_fragmentContainer,new HomeFragment());
         fragmentTransaction.commit();

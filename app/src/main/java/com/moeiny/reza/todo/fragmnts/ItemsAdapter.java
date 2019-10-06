@@ -1,9 +1,8 @@
-package com.moeiny.reza.TO_DO_Project.fragmnts;
+package com.moeiny.reza.todo.fragmnts;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +10,10 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moeiny.reza.TO_DO_Project.R;
-import com.moeiny.reza.TO_DO_Project.data.MyDatabase;
-import com.moeiny.reza.TO_DO_Project.data.ToDoItems;
-import com.moeiny.reza.TO_DO_Project.detail.DetailActivity;
+import com.moeiny.reza.todo.R;
+import com.moeiny.reza.todo.data.MyDatabase;
+import com.moeiny.reza.todo.data.ToDoItems;
+import com.moeiny.reza.todo.detail.DetailActivity;
 
 import java.util.List;
 
@@ -50,14 +49,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
 
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtTitle = (TextView) itemView.findViewById(R.id.txt_todorow_title);
-            txtDate = (TextView) itemView.findViewById(R.id.txt_todorow_date);
-            txtTime = (TextView) itemView.findViewById(R.id.txt_todorow_time);
-            chkMark = (CheckBox) itemView.findViewById(R.id.chk_todorow_mark);
-            imgDeleteItems = (ImageView) itemView.findViewById(R.id.img_todorow_delete);
-            imgEditItems = (ImageView) itemView.findViewById(R.id.img_todorow_edit);
-            imgToDo = (ImageView) itemView.findViewById(R.id.img_todorow_Icon);
-            parent = (CardView) itemView.findViewById(R.id.card_todorow_parent);
+            txtTitle = itemView.findViewById(R.id.txt_todorow_title);
+            txtDate = itemView.findViewById(R.id.txt_todorow_date);
+            txtTime = itemView.findViewById(R.id.txt_todorow_time);
+            chkMark = itemView.findViewById(R.id.chk_todorow_mark);
+            imgDeleteItems = itemView.findViewById(R.id.img_todorow_delete);
+            imgEditItems = itemView.findViewById(R.id.img_todorow_edit);
+            imgToDo = itemView.findViewById(R.id.img_todorow_Icon);
+            parent = itemView.findViewById(R.id.card_todorow_parent);
         }
     }
 
@@ -75,9 +74,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
 
         final ToDoItems items = itemsList.get(position);
         final ToDoItems items2 = itemsList.get(position);
-        holder.txtTitle.setText(items.getTitle().toString());
-        holder.txtDate.setText(items.getDate().toString());
-        holder.txtTime.setText(items.getTime().toString());
+        holder.txtTitle.setText(items.getTitle());
+        holder.txtDate.setText(items.getDate());
+        holder.txtTime.setText(items.getTime());
         description = items.getDescription();
         id = items.getId();
         if (items.getMark().equals("1")) {

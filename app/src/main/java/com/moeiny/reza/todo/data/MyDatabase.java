@@ -1,4 +1,4 @@
-package com.moeiny.reza.TO_DO_Project.data;
+package com.moeiny.reza.todo.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -80,7 +80,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String mark="1";
         String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_MARK+" = ?";
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
-        return sqLiteDatabase.rawQuery(query,new String[]{String.valueOf(mark)});
+        return sqLiteDatabase.rawQuery(query,new String[]{mark});
     }
 
     public Cursor getSomeDatabyid(Integer id){
