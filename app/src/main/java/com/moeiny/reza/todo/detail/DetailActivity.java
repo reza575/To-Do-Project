@@ -6,26 +6,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.moeiny.reza.todo.R;
 import com.moeiny.reza.todo.data.MyDatabase;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 public class DetailActivity extends AppCompatActivity {
 
+    //Var's
     MyDatabase myDatabase;
+    String itemTitle,itemDescription,itemDate,itemTime, itemMark;
     Integer id;
+
+    //Widget's
     EditText edtTitle;
     EditText edtDate;
     EditText edtTime;
     EditText edtDescription;
     Button btnSaveChanges;
-    String mark;
-    FragmentTransaction fragmentTransaction;
-
-    String itemTitle,itemDescription,itemDate,itemTime, itemMark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +41,9 @@ public class DetailActivity extends AppCompatActivity {
         setView();
     }
 
+    /**
+     * The view is set from database
+     */
     private void setView() {
         myDatabase=new MyDatabase(DetailActivity.this);
         btnSaveChanges= findViewById(R.id.btn_detailActivity_save);
@@ -69,9 +70,9 @@ public class DetailActivity extends AppCompatActivity {
                     values.put("date",edtDate.getText().toString());
                     values.put("time",edtTime.getText().toString());
                     values.put("mark", itemMark);
-                    myDatabase.updateRow(id,values);
+                    myDatabase.updateRow(id,values);    //Saving tha changes of current Record
                 }
-                finish();
+                finish();    //close DetailActivity and switvh to Main Activity
             }
         });
     }

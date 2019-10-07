@@ -42,7 +42,6 @@ public class MyDatabase extends SQLiteOpenHelper {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
     }
 
 
@@ -50,7 +49,6 @@ public class MyDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
 
 
     public long addInfo(String title, String desc, String date,String time,String mark){
@@ -70,6 +68,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
     }
 
+
     public Cursor getInfos(){
         String query="SELECT  * FROM "+TBL_NAME+"" ;
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
@@ -84,7 +83,6 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor getSomeDatabyid(Integer id){
-
         String query="SELECT * FROM "+TBL_NAME+" WHERE "+COL_ID+" = ?";
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         return sqLiteDatabase.rawQuery(query,new String[]{String.valueOf(id)});
@@ -98,9 +96,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
 
     public void updateRow(Integer id,ContentValues values){
-
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
-
         sqLiteDatabase.update(TBL_NAME,values,COL_ID+" = ?",new String[]{String.valueOf(id)});
     }
 
@@ -108,6 +104,4 @@ public class MyDatabase extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         sqLiteDatabase.delete(TBL_NAME,COL_ID+" = ?",new String[]{String.valueOf(id)});
     }
-
-
 }

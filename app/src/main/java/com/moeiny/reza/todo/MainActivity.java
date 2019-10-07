@@ -1,9 +1,5 @@
 package com.moeiny.reza.todo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Context;
 import android.os.Bundle;
 
 import com.moeiny.reza.todo.fragmnts.HomeFragment;
@@ -13,19 +9,27 @@ import com.moeiny.reza.todo.fragmnts.SerachFragment;
 import com.ss.bottomnavigation.BottomNavigation;
 import com.ss.bottomnavigation.events.OnSelectedItemChangeListener;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
 public class MainActivity extends AppCompatActivity {
+
+    //Widget's
     BottomNavigation bottomNavigation;
     FragmentTransaction fragmentTransaction;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context=this;
+
+        /**
+         * The view is managed by Transaction management
+         */
         setupVews();
     }
 
+    //onResume adjust the Fragment when switch to MainActivity
     @Override
     protected void onResume() {
         super.onResume();
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.rel_main_fragmentContainer,new HomeFragment());
         fragmentTransaction.commit();
 
-
+       //this method called when user clicked on the different Tabs of BottomNavofation
         bottomNavigation.setOnSelectedItemChangeListener(new OnSelectedItemChangeListener() {
             @Override
             public void onSelectedItemChanged(int i) {
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+   //when User click on the backButton the first tab should be selected and showed by this method
     @Override
     public void onBackPressed() {
         if(bottomNavigation.getSelectedItem()==0){

@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.moeiny.reza.todo.R;
 import com.moeiny.reza.todo.data.MyDatabase;
 import com.moeiny.reza.todo.data.ToDoItems;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,16 +21,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeFragment extends Fragment {
-    View myView;
-    RecyclerView recyclerView;
+    //Var's
     ItemsAdapter adapter;
     List<ToDoItems> listItems;
     MyDatabase myDatabase;
+    View myView;
+
+    //Widget's
+    RecyclerView recyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        myView=inflater.inflate(R.layout.fragment_home,container,false);
-        setView();
+
+        setView();    //  The view is set from database in regard of Query result
+
        getMarkItems(myView.getContext());
        return myView;
     }
@@ -51,14 +60,12 @@ public class HomeFragment extends Fragment {
                 item.setTime(time);
                 item.setMark(mark);
                 listItems.add(item);
-
             } while (cursor.moveToNext());
-            setDataOnRecycler();
+
+            setDataOnRecycler();   // The Recycler is set from database 
             cursor.close();
         }
     }
-
-
 
     public void setDataOnRecycler(){
         adapter=new ItemsAdapter(this.getContext(),listItems);
@@ -71,7 +78,4 @@ public class HomeFragment extends Fragment {
         recyclerView = myView.findViewById(R.id.rv_fragmenthome_todoitems);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));
     }
-
-
-
 }

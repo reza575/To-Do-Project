@@ -28,6 +28,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
     MyDatabase myDatabase;
     int flag;
 
+    //ItemsAdapter Constructor
     public ItemsAdapter(Context context, List<ToDoItems> itemsList) {
         this.itemsList = itemsList;
         this.context = context;
@@ -38,7 +39,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
     public class ItemsViewHolder extends RecyclerView.ViewHolder {
         CardView parent;
         TextView txtTitle;
-        TextView txtDescription;
         TextView txtDate;
         TextView txtTime;
         CheckBox chkMark;
@@ -46,7 +46,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
         ImageView imgEditItems;
         ImageView imgToDo;
 
-
+        //ItemsAdapter Constructor
         public ItemsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTitle = itemView.findViewById(R.id.txt_todorow_title);
@@ -69,22 +69,21 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
 
     @Override
     public void onBindViewHolder(@NonNull final ItemsViewHolder holder, final int position) {
-        final String description;
         final Integer id;
-
         final ToDoItems items = itemsList.get(position);
         final ToDoItems items2 = itemsList.get(position);
         holder.txtTitle.setText(items.getTitle());
         holder.txtDate.setText(items.getDate());
         holder.txtTime.setText(items.getTime());
-        description = items.getDescription();
         id = items.getId();
+
         if (items.getMark().equals("1")) {
             holder.chkMark.setChecked(true);
         } else {
             holder.chkMark.setChecked(false);
         }
 
+        //Mark or Unmark current recyclerview Item in Database
         holder.chkMark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +101,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
             }
         });
 
+        //delete current recyclerview Item in Database
         holder.imgDeleteItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +109,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
             }
         });
 
+        //Edit current recyclerview Item in Database
         holder.imgEditItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,13 +122,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
                 intent.putExtra("items_Time", items.getTime());
                 intent.putExtra("items_Description", items.getDescription());
                 intent.putExtra("items_Mark", items.getMark());
-                context.startActivity(intent);
+
+                context.startActivity(intent);   //Send data to DetailActivity
             }
 
         });
-
     }
 
+    //return the size of ItemList Array
     @Override
     public int getItemCount() {
         return itemsList.size();
