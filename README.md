@@ -24,7 +24,7 @@ It just needs to import to Android Studio 3(Gradle 4) as a Java project
 
 ## Built With
 
-* [RelativeLayout](https://developer.android.com/training/Relative-layout/index.html) -A Responsive UI layout manager
+* [RelativeLayout](https://https://developer.android.com/guide/topics/ui/layout/relative) -A Responsive UI layout manager
 
 ## Contributing
 
